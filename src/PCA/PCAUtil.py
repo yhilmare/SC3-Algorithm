@@ -26,7 +26,7 @@ def read_file_from_disk(filename=r'g:/ML/temp/result.csv'):
         fp.close()
 
 def centralized_samples(samples):
-    temp = np.ones((1, samples.shape[1]), dtype=np.float)[0]
+    temp = np.zeros((1, samples.shape[1]), dtype=np.float)[0]
     for item in samples:
         temp += item
     temp /= samples.shape[0]

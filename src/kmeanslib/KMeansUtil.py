@@ -17,11 +17,11 @@ resultDict = dict()#最终的分类呈现
 
 def getRandomVectorIndex(dataDict)->None:
     global current_mean_vector_index
-    random.seed(date.second)
     randomTemp = set()
     try:
         dictLen = len(dataDict)
         keys = list(dataDict.keys())
+        random.seed(date.second)
         for i in range(0, initial_classify_num):
             temp = random.choice(keys)
             if temp not in randomTemp:
@@ -80,7 +80,6 @@ def convergeToResult(dataDict):
                 min_count = dist
                 classify_index = item[1]
         resultDict[classify_index].append(key)
-    print("=====" * 8)
     tempList = list()
     for item in resultDict.items():
         tempList.append((calMeanVector(dataDict, item[1]), item[0]))
@@ -106,9 +105,11 @@ def wirteToFile(destDir):
         fp.close()
 
 def run_kmeans_cluster(samples, classify_num = 3, digtal_num = 3):
-    global initial_classify_num, num_digtal
+    global initial_classify_num, num_digtal, current_mean_vector_index, resultDict
     initial_classify_num = classify_num
     num_digtal = digtal_num
+    current_mean_vector_index = list()
+    resultDict = dict()
     getRandomVectorIndex(samples)  # 初始化均值向量的索引号
     while True:
         if convergeToResult(samples) == 1:

@@ -9,7 +9,6 @@ import PCA.PCAUtil as pa
 import numpy as np
 import matplotlib as mpl
 from matplotlib import pyplot as plt
-from lib2to3.fixer_util import Newline
 
 def getDataDict(fileName:"to input the filename"="g:/ML/temp/temp.csv")->dict:
     try:
@@ -106,9 +105,9 @@ def wirte_to_file(filename, result_matrix, index_lst):
         fp.close()
 
 if __name__ == '__main__':
-#     samples = read_samples_from_disk_forPCA()#从文件中为pca降维读到数据
-#     dest_matrix = pa.reduce_the_dim_matrix(samples)#利用pca得到降维后的数据
-#     pca_data = parse_data_for_kMeans(dest_matrix)#将降维后的数据进行处理，得到kmeans能用的数据
+    samples = read_samples_from_disk_forPCA()#从文件中为pca降维读到数据
+    dest_matrix = pa.reduce_the_dim_matrix(samples)#利用pca得到降维后的数据
+    pca_data = parse_data_for_kMeans(dest_matrix)#将降维后的数据进行处理，得到kmeans能用的数据
 #==========================对距离矩阵进行kmeans聚类，注意路径问题================================================
     try:
         fp = open(r'g:/ML/temp/filter_gene_2.csv', 'r')

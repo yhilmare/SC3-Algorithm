@@ -12,16 +12,17 @@ from matplotlib import cm
 
 def func():
     try:
-        fp = open(r'g:/ML/temp/最终结果/finally_conment_matrix.csv', 'r')
+        fp = open(r'G:\研究生课件\机器学习\ML\consensus.csv', 'r')
         reader = csv.reader(fp)
-        x = reader.__next__()[1:]
+        #x = reader.__next__()[1:]
         matrix = []
         for row in reader:
-            matrix.append(row[1:])
+            matrix.append(row)
     except Exception as e:
         print(e)
     else:
         matrix = np.array(matrix, dtype = np.float)
+        print(matrix.shape)
         x = np.arange(420)
         x, y = np.meshgrid(x, x)
         mpl.rcParams['xtick.labelsize'] = 6
